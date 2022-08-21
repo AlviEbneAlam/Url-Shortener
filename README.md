@@ -25,6 +25,6 @@ The list of endpoints related to accessing the home page of ui-
 
 1. /host-url/base-url/welcome
 
-##Issues
+## Issues
 
 * Failed to implement redirection due to cors.
