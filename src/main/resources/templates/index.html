@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple login form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+</head>
+<body>
+<form  id="url-input">
+    <h1>Url Shortener</h1>
+    <div  class="formcontainer">
+        <hr/>
+        <div class="container">
+            <input type="text" placeholder="Enter Long Url" name="url" required>
+        </div>
+        <button type="submit">Get Short Url</button>
+    </div>
+
+    <div class="short-url-container"> </div>
+</form>
+
+
+<script>
+
+    var short_url='';
+
+    const urlForm=document.getElementById("url-input");
+
+    urlForm.addEventListener('submit', function(e) {
+        // Prevent default behavior:
+        e.preventDefault();
+        // Create payload as new FormData object:
+        const payload = new FormData(urlForm);
+       // console.log(payload.get('url'));
+
+        const data=Object.fromEntries(urlForm);
+        const json_data={
+            "url":payload.get('url')
+        }
+        // Post the payload using Fetch:
+        fetch('http://localhost:8082/url-shortener/getShortUrl', {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json_data)
+        })
+            .then(res => {res.text().then((text) => {
+                display(text)
+            })
+
+            })
+            .then(data =>
+                console.log("data is: ",data))
+        .catch(error =>
+            console.log(error));
+
+
+    })
+
+
+    function display(text){
+       // console.log("display text: ",text);
+        short_url=text;
+        let html='';
+        let htmlSegment = `<div class="display">
+                            <h2><a id="short-url-gen" onclick="clickOnShortLink()">Short-url: ${text}</a></h2>
+                        </div>`;
+
+        html += htmlSegment;
+
+        let container = document.querySelector('.short-url-container');
+        container.innerHTML = html;
+        return "";
+    }
+
+    /*const url_link=document.getElementById("short-url-gen");
+    url_link.addEventListener('click', function(event){
+
+        console.log("Clicked on the link",short_url);
+        event.preventDefault();
+        const json_data={
+            "url":short_url
+        }
+        // Post the payload using Fetch:
+        fetch('http://localhost:8082/url-shortener/getLongUrl', {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json_data)
+        })
+            .then(res => {res.text().then((text) => {
+            })
+
+            })
+            .then(data =>
+                console.log("Long url data is: ",data))
+            .catch(error =>
+                console.log(error));
+    })
+*/
+
+    function clickOnShortLink(event){
+        console.log("Clicked on the link",short_url);
+        //event.preventDefault();
+        const json_data={
+            "url":short_url
+        }
+        // Post the payload using Fetch:
+        fetch('http://localhost:8082/url-shortener/getLongUrl', {
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(json_data)
+        })
+            .then(res => {res.text().then((text) => {
+            })
+
+            })
+            .then(data =>
+                console.log("Long url data is: ",data))
+            .catch(error =>
+                console.log(error));
+    }
+</script>
+</body>
+</html>
