@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/url-shortener")
 public class URLRequest {
@@ -29,12 +29,12 @@ public class URLRequest {
     }
 
 
+
     @PostMapping("/getLongUrl")
-    @CrossOrigin(origins = "http://localhost:8082")
-    public ModelAndView  getLongUrl(@RequestBody Url url){
-        String gurl="https://www.google.com";
-        return new ModelAndView("redirect:" + gurl/*urlEncodeAndDecode.decodeLongUrl(url.getUrl())*/);
-        //return new RedirectView(urlEncodeAndDecode.decodeLongUrl(url.getUrl()));
+    public String  getLongUrl(@RequestBody Url url){
+        /*return new ModelAndView("redirect:" +  urlEncodeAndDecode.decodeLongUrl(url.getUrl()));*/
+        return urlEncodeAndDecode.decodeLongUrl(url.getUrl());
+
     }
 
 
