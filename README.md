@@ -1,5 +1,5 @@
 # Url-Shortener
-A url shortener project that takes in a long url and produces unique short url
+A url shortener project that takes in a long url and produces unique short url. Produces the same short url for the same link.
 # API DOCUMENTATION
 
 API Endpoint
@@ -8,9 +8,9 @@ base-url: /url-shortener
 
 The list of endpoints related to encoding and decoding urls-
 
-## POST: host-url/base-url/getShortUrl [Takes long url as json body and return short url as string]
-   1.Content-Type: application/json
-   2.Example Request-Body: 
+1. POST: host-url/base-url/getShortUrl [Takes long url as json body and return short url as string]
+   - Content-Type: application/json
+   - Example Request-Body: 
    {
     "url":"https://byjus.com/maths/hex-to-decimal/"
    }
