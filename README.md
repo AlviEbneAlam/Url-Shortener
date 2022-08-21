@@ -14,9 +14,9 @@ The list of endpoints related to encoding and decoding urls-
    {
     "url":"https://byjus.com/maths/hex-to-decimal/"
    }
-## POST: host-url/base-url/getLongUrl [Takes short url as json body and return long url as string]
-   1.Content-Type: application/json
-   2.Example Request-Body: 
+2. POST: host-url/base-url/getLongUrl [Takes short url as json body and return long url as string]
+   - Content-Type: application/json
+   - Example Request-Body: 
         {
          "url":"https://url-shortener/e"
         }
