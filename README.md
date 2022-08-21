@@ -23,5 +23,8 @@ The list of endpoints related to encoding and decoding urls-
 
 The list of endpoints related to accessing the home page of ui-
 
-* /host-url/base-url/welcome
+1. /host-url/base-url/welcome
 
+##Issues
+
+* Failed to implement redirection due to cors.
