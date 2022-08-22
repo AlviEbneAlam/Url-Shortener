@@ -55,7 +55,7 @@ public class UrlEncodeAndDecode {
         for(int i=short_url_id.length()-1,j=0;i>=0;i--,j++){
             if('a' <= short_url_id.charAt(i) &&
                     short_url_id.charAt(i) <= 'z'){
-                url_id=(int)Math.pow(62,j)*(short_url_id.charAt(i)-'a');
+                url_id=url_id+(int)Math.pow(62,j)*(short_url_id.charAt(i)-'a');
 
             }
             else if('A' <= short_url_id.charAt(i) &&
