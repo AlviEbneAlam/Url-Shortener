@@ -24,7 +24,7 @@ The list of endpoints related to encoding and decoding urls-
 The list of endpoints related to accessing the home page of ui-
 
 1. /host-url/base-url/welcome
-
+2. Click on retrieved short url on welcome page to get original long url
 ## Issues
 
 * Failed to implement redirection due to cors.
